@@ -48,7 +48,7 @@ log_hipaa_event("Permission granted to view " + Meteor.user().profile.name, LogL
 ````
 
 
-In a more realistic situation, HIPAA events will occur as parts of specific functions, usually related to adding or removing specific values to the databaes.  As an example, here is a function from a symptom tracking application, which is equivalent to 'deleting a friend'.  In this case, a user in the database is being removed from a profile's list of approached collaborators.   Note the use of hte log_hipaa_event in the callback to the database updates.  
+In a more realistic situation, HIPAA events will occur as parts of specific functions, usually related to adding or removing specific values to the databaes.  As an example (from a symptom tracking application), here is a function which is equivalent to 'deleting a friend'.  In this case, a user in the database is being removed from a profile's list of approached collaborators.   Note the use of hte log_hipaa_event in the callback to the database updates.  
 
 ````js
 Template.userCardTemplate.events({
