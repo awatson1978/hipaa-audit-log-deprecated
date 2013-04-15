@@ -1,6 +1,3 @@
-// hipaa.logging.js
-// version: 12.16.2012
-
 var logToConsole = true;
 var logToDatabase = true;
 
