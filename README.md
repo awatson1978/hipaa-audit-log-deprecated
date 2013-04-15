@@ -33,7 +33,7 @@ You'll want to add the hipaaLog template to your application somewhere, which wi
 ````
 
 ------------------------
-### Controllers - Logging to the HIPAA Audit Log
+### Controllers - Logging Clinically Significant Events
 
 Next, you'll want to actually log a clinically significant privacy event.  The basic syntax looks something like this:
 ````javascript
@@ -41,7 +41,7 @@ log_hipaa_event("Permission granted to view " + Meteor.user().profile.name, LogL
 ````
 
 
-For instance, you might have a reactive template wired up like this:
+And it will be used in more complex functions, like the following.  Note the use of hte log_hipaa_event in the callback to the database updates.  Also, you'll need to decide if you're going to implement event symmetry between the participants.  You should implement symmetry by default, and be careful about asymmetrical auditing configurations.
 
 ````js
 Template.userCardTemplate.events({
