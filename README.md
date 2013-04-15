@@ -36,12 +36,19 @@ You'll want to add the hipaaLog template to your application somewhere, which wi
 ### Controllers - Logging Clinically Significant Events
 
 Next, you'll want to actually log a clinically significant privacy event.  The basic syntax looks something like this:
+
 ````javascript
-log_hipaa_event("Permission granted to view " + Meteor.user().profile.name, LogLevel.Hipaa, this._id);
+log_hipaa_event(log_message, log_level, owner);
+````
+
+And which gets implemented in calls like the following, in practice:
+
+````javascript
+log_hipaa_event("Permission granted to view " + Meteor.user().profile.name, LogLevel.Hipaa, Meteor.userId());
 ````
 
 
-And it will be used in more complex functions, like the following.  Note the use of hte log_hipaa_event in the callback to the database updates.  Also, you'll need to decide if you're going to implement event symmetry between the participants.  You should implement symmetry by default, and be careful about asymmetrical auditing configurations.
+In a more realistic situation, HIPAA events will occur as parts of specific functions, usually related to adding or removing specific values to the databaes.  As an example, here is a function from a symptom tracking application, which is equivalent to 'deleting a friend'.  In this case, a user in the database is being removed from a profile's list of approached collaborators.   Note the use of hte log_hipaa_event in the callback to the database updates.  
 
 ````js
 Template.userCardTemplate.events({
@@ -60,3 +67,5 @@ Template.userCardTemplate.events({
   }
 });
 ````
+
+Also, you'll need to decide if you're going to implement event symmetry between the participants.  You should implement symmetry by default, and be careful about asymmetrical auditing configurations.
