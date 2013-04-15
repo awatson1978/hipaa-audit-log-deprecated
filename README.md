@@ -37,17 +37,26 @@ You'll want to add the hipaaLog template to your application somewhere, which wi
 
 Next, you'll want to actually log a clinically significant privacy event.  The basic syntax looks something like this:
 ````javascript
-log_hipaa_event("Permission granted to view " + Meteor.user().profile.name + ".", LogLevel.Hipaa, this._id);
+log_hipaa_event("Permission granted to view " + Meteor.user().profile.name, LogLevel.Hipaa, this._id);
 ````
 
 
 For instance, you might have a reactive template wired up like this:
 
 ````js
-    Template.sampleListItem.events({  
-        'click': function(evt){  
-            document.getElementById('clickAudioClip').play();  
-            // do something fancy when clicked...
-        }  
-    });  
+Template.userCardTemplate.events({
+  'click .carewatch-data .destroy': function (evt, tmpl) {
+      if(confirm("Are you sure you want to remove " + this.name + " from your carewatch list?")){
+          Meteor.users.update(this._id, {$pull: { 'profile.collaborators': {
+              _id: Meteor.user()._id,
+              name: Meteor.user().profile.name
+          } }},function(){
+              log_hipaa_event(Meteor.user().profile.name + " left your collaboration group.", LogLevel.Hipaa, this._id);
+          });
+          Meteor.users.update(Meteor.userId(), {$pull: { 'profile.carewatch': this }}, function(){
+              log_hipaa_event("You stopped following " + Meteor.user().profile.name, LogLevel.Hipaa, Meteor.userId());          
+          });
+      }
+  }
+});
 ````
