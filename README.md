@@ -9,7 +9,7 @@ You've stumbled upon one of my projects before I've published it.  Use at your o
 ------------------------
 ### Installation
 
-First, install the hipaa-audit-log package from the command line, like so:
+Once released on Atmosphere, one would install the hipaa-audit-log package from the command line, like so:
 
 ````
 mrt add hipaa-audit-log
