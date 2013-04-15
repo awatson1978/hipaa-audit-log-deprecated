@@ -38,7 +38,7 @@ You'll want to add the hipaaLog template to your application somewhere, which wi
 Next, you'll want to actually log a clinically significant privacy event.  The basic syntax looks something like this:
 
 ````javascript
-log_hipaa_event(log_message, log_level, owner);
+log_hipaa_event(log_message, log_level, ownerId);
 ````
 
 And which gets implemented in calls like the following, in practice:
