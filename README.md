@@ -69,3 +69,28 @@ Template.userCardTemplate.events({
 ````
 
 Also, you'll need to decide if you're going to implement event symmetry between the participants.  You should implement symmetry by default, and be careful about asymmetrical auditing configurations.
+
+------------------------
+### HIPAA Compliant Applications
+
+Meteor comes very close to being HIPAA compliant out-of-the-box.  The general principle of HIPAA is to protect patient privacy.  But what does that mean?  Well, each patient is an individual, and privacy implies that personal details aren't shared indiscriminately or in ways that interlocutors may become privy to. 
+
+In practice, HIPAA compliancy boils down to three things:  individual user accounts, encrypted transmission of data, and audit logs.  It turns out that Meteor provides two of those features out-of-the-box, with the accounts-ui and force-ssl packages.  
+
+So, putting everything together, and it appears that a recipe for a HIPAA compliant Meteor application would look something like this:
+
+````
+meteor add accounts-ui
+meteor add force-ssl
+mrt add hipaa-audit-log
+````
+
+
+
+
+
+
+
+
+
+
