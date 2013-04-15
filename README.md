@@ -1,16 +1,18 @@
-hipaa-audit-log
-===============
-
 Meteor package that provides HIPAA logging and audit features for Meteor Apps.
+
+------------------------
+### **NOTE:  This package is pre-release!  Totally alpha; subject to change; etc.**
+
+You've stumbled upon one of my projects before I've published it.  Use at your own risk.  
 
 
 ------------------------
 ### Installation
 
-First, install the audio-click package from the command line, like so:
+First, install the hipaa-audit-log package from the command line, like so:
 
 ````
-mrt add audio-click
+mrt add hipaa-audit-log
 ````
 
 ------------------------
