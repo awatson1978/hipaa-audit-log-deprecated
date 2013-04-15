@@ -1,0 +1,13 @@
+<template name="hipaaLog">
+    <div class="row">
+        <ul>
+            {{#each hipaaAudit}}
+            {{> hipaaEntry}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
+<template name="hipaaEntry">
+    <li><span class="darkgray">{{entry_timestamp}}, </span><span class="gray hidden">{{ owner }}, </span>{{text}}
+    </li>
+</template>
