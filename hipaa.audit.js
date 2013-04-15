@@ -4,10 +4,10 @@ Hipaa.allow({
         return true;
     },
     update: function () {
-        return true;
+        return false;
     },
     remove: function(){
-        return true;
+        return false;
     }
 });
 
