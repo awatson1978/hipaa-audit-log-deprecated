@@ -68,7 +68,7 @@ Template.userCardTemplate.events({
 });
 ````
 
-Also, you'll need to decide if you're going to implement event symmetry between the participants.  You should implement symmetry by default, and be careful about asymmetrical auditing configurations.
+Also, you'll need to decide if you're going to implement event symmetry between the participants.  Best practice is probably to just go ahead and implement symmetry by default, logging two events (one for each party). 
 
 ------------------------
 ### HIPAA Compliant Applications
