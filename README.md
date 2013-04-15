@@ -15,21 +15,29 @@ First, install the hipaa-audit-log package from the command line, like so:
 mrt add hipaa-audit-log
 ````
 
-------------------------
-### Data/Document Model
-
-Second, add the audioSoundsTemplate to your application, which adds all the necessary audio objects to the DOM.  
-
-````
-    {{> audioSoundsTemplate }}
-````
 
 ------------------------
-### Controllers
+### Data Model
 
-Third, add the following line to any event you want to play a click. 
+At installation, a Mongo collection is created named 'Hipaa', which users can find and insert into, but cannot update or remove.  This makes it an audit log that people can refer to later to find out what clinically relevant privacy events have occurred.
+
+------------------------
+### Document Object Model
+
+You'll want to add the hipaaLog template to your application somewhere, which will display the Hipaa Audit Log.
+
+````html
+<div>
+  {{> hipaaLog }}
+</div>
 ````
-    document.getElementById('clickAudioClip').play();  
+
+------------------------
+### Controllers - Logging to the HIPAA Audit Log
+
+Next, you'll want to actually log a clinically significant privacy event.  The basic syntax looks something like this:
+````javascript
+log_hipaa_event("Permission granted to view " + Meteor.user().profile.name + ".", LogLevel.Hipaa, this._id);
 ````
 
 
