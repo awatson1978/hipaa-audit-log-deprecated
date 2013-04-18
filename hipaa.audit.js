@@ -4,15 +4,17 @@ Hipaa.allow({
         return true;
     },
     update: function () {
-        return true;
+        return false;
     },
     remove: function(){
-        return true;
+        return false;
     }
 });
 
 
 if (Meteor.isClient) {
+    Meteor.subscribe('hipaa');
+
     Template.hipaaLog.hipaaAudit = function () {
         return Hipaa.find();
     }

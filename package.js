@@ -6,5 +6,7 @@ Package.on_use(function (api) {
     api.use('templating', 'client');
     api.add_files('hipaa.audit.html', "client");
     api.add_files('hipaa.audit.js', "client");
-    api.add_files('hipaa.logging.js', "client");
+
+    // the server needs to log HIPAA events also!
+    api.add_files('hipaa.logging.js', ["client","server"]);
 });
