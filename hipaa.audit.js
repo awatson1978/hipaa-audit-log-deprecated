@@ -3,9 +3,11 @@ Hipaa.allow({
     insert: function(){
         return true;
     },
+    // once written, people should be able to change the audit log
     update: function () {
         return false;
     },
+    // once written, people should be able to change the audit log
     remove: function(){
         return false;
     }
@@ -23,7 +25,25 @@ if (Meteor.isClient) {
     }
 }
 
-if (Meteor.isServer) {
+if(Meteor.isServer) {
+    Meteor.startup(function () {
+        console.log('Meteor.startup...');
+        if (Hipaa.find().count() == 0) {
+            console.log('No events in hipaa audit log!  Initializing audit log...');
+
+            var eventId = Hipaa.insert({
+                owner: 'System',
+                loglevel: LogLevel.Hipaa,
+                text: "Initializing audit log.",
+                timestamp: new Date().getTime()
+            });
+
+            console.log(eventId);
+        }
+    });
+
+
+
     Meteor.publish('hipaa', function () {
         return Hipaa.find();
     });

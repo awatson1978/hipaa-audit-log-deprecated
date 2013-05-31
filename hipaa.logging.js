@@ -48,11 +48,20 @@ parseLogLevel = function(int){
 
 
 log_hipaa_event = function(message, loglevel, owner){
+    console.log('logging hipaa event...');
+
     if(logToConsole){
         console.log(owner + ', LogLevel: ' + loglevel + " - "+ message);
+
+        //log_hipaa_event("Sent task " + Session.get('selected_task_id') + " to " + Meteor.users.findOne(Meteor.user().profile.activeCollaborator).profile.name + " (" + Meteor.user().profile.activeCollaborator + " ).", LogLevel.Hipaa, Meteor.user()._id);
+
+
     }
     if(logToDatabase){
+        console.log('logging to database...');
         if(loglevel == LogLevel.Hipaa){
+            console.log('loglevel.hipaa...');
+
             Hipaa.insert({
                 owner: owner,
                 loglevel: loglevel,
