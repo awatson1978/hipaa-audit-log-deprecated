@@ -3,8 +3,7 @@ Meteor package that provides HIPAA logging and audit features for Meteor Apps.
 ------------------------
 ### **NOTE:  This package is pre-release!  Totally alpha; subject to change; etc.**
 
-You've stumbled upon one of my projects before I've published it.  Use at your own risk.  
-
+Be aware that hipaa-audit-log is an old package (it was the very first one I ever made), and is ready for a **big** update.  It's not particularly fancy, and really is just some core files for copying into your application to create a one-way audit log, and to display it.   Use it as inspiration, but I'd suggest giving it a thorough review and rewrite to make it suite your particular needs before putting it into production.  
 
 ------------------------
 ### Installation
